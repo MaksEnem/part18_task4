@@ -1,28 +1,39 @@
 #include <iostream>
 
-void number_of_digits(int& number, int& c) {	
 
+
+void evendigits(long long& number, int& answer) {
+
+	long long copy_number = number;
+	
 	if (number < 1) {
 
 		return;
-	}
-	
+
+	}	
+
+	copy_number = number % 10;
 	number = number / 10;
+
+	if (copy_number % 2 == 0) {
+
+		++answer;
+
+	}	
+
+	return evendigits(number, answer);
 	
-	++c;
 
-	number_of_digits(number, c);	
-
-	return;
 }
+
 
 int main() {
 
-	int number = 543210;
+	long long number = 9223372036854775806;
 
-	int c = 0;
+	int answer = 0;
+
+	evendigits(number, answer);
 	
-	number_of_digits(number, c);
-	
-	std::cout << " sdfghdhdfh = " << c;
+	std::cout << answer;
 }
