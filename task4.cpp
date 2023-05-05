@@ -1,50 +1,28 @@
 #include <iostream>
 
-int number_of_digits(long long number) {
-
-	long long b = number;
-	int c = 0;
+void number_of_digits(int& number, int& c) {	
 
 	if (number < 1) {
 
-		return 0;
-
+		return;
 	}
+	
+	number = number / 10;
+	
+	++c;
 
-	if (number > 0) {
+	number_of_digits(number, c);	
 
-		++c;
-
-	}
-
-	return number_of_digits(number / 10);	
-
-	return c;
+	return;
 }
 
 int main() {
 
-	long long number = 9223372036854775806;
+	int number = 543210;
+
 	int c = 0;
-	long long b = number;
-	int d = 0;
-
-	c = number_of_digits(number);
 	
-	std::cout << c;
-	for (int i = 0; i < c; ++i) {
-
-		b = number % 10;
-		number = number / 10;
-		
-
-		if (b % 2 == 0) {
-
-			++d;
-
-		}
-
-	}
-
-	std::cout << d;
+	number_of_digits(number, c);
+	
+	std::cout << " sdfghdhdfh = " << c;
 }
